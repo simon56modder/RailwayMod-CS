@@ -1,13 +1,8 @@
-﻿using System;
+﻿using ColossalFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using ICities;
 using UnityEngine;
-
-using UnityEngine.SceneManagement;
-using ColossalFramework;
-using ColossalFramework.UI;
 
 namespace RailwayMod
 {
