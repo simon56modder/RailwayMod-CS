@@ -148,6 +148,20 @@ namespace RailwayMod
                     }
                 }
             }
+
+            //SubBuildings
+            if (info.m_subBuildings == null)
+                return;
+
+            var subBuildingsCount = info.m_subBuildings.Length;
+            for (int i = 0; i < subBuildingsCount; i++)
+            {
+                var subBuildingInfo = info.m_subBuildings[i];
+                if (subBuildingInfo == null)
+                    continue;
+
+                this.SetStationTrackForType(subBuildingInfo.m_buildingInfo, type, net);
+            }
         }
 
         // Populates prefabTrackTypes according to the types contained by the given prefab.
@@ -169,6 +183,19 @@ namespace RailwayMod
                         }
                     }
                 }
+            }
+
+            //SubBuildings
+            if (info.m_subBuildings == null)
+                return;
+
+            var subBuildingsCount = info.m_subBuildings.Length;
+            for (int i = 0; i < subBuildingsCount; i++)
+            {
+                var subBuildingInfo = info.m_subBuildings[i];
+                if (subBuildingInfo == null)
+                    continue;
+                this.FindTrackTypes(subBuildingInfo.m_buildingInfo);
             }
         }
         // Returns the STType of a given compatible Train track.
