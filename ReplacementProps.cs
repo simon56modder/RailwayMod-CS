@@ -94,10 +94,12 @@ namespace RailwayMod
         }
         void Update()
         {
-            if (Input.GetKey(KeyCode.LeftControl))
+            if (Input.GetKey(KeyCode.LeftShift) 
+                && Input.GetKey(KeyCode.LeftAlt)
+                && Input.GetKeyDown(KeyCode.P)
+            )
             {
-                if (Input.GetKeyDown(KeyCode.P))
-                    showWindow = !showWindow;
+                showWindow = !showWindow;
             }
         }
         void OnGUI()
