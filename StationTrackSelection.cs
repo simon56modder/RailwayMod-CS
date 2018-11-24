@@ -45,6 +45,7 @@ namespace RailwayMod
                     {
                         // execute here when a station gets selected
                         selectedPrefab = prefab;
+                        prefabNetTypes.Clear();
                         FindTrackTypes(prefab);
                         expandedTypes.Clear();
                         winheight = 48 + (28 * prefabNetTypes.Count) + (expandedTypes.Count * 100);
@@ -167,7 +168,6 @@ namespace RailwayMod
         // Populates prefabTrackTypes according to the types contained by the given prefab.
         private void FindTrackTypes(BuildingInfo info)
         {
-            prefabNetTypes.Clear();
             if (info.m_paths != null)
             {
                 var paths = info.m_paths;
