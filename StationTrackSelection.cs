@@ -64,7 +64,7 @@ namespace RailwayMod
         private void Window(int id)
         {
             GUI.DragWindow(new Rect(0, 0, 375, 24));
-            GUI.Label(new Rect(5, 18, 365, 23), "Choose station tracks to use on \"" + selectedPrefab.GetLocalizedTitle() + "\"");
+            GUI.Label(new Rect(5, 18, 365, 23), "Choose station tracks to use on \"" + selectedPrefab.GetUncheckedLocalizedTitle() + "\"");
             ushort h = 43;
             foreach (STType type in prefabNetTypes)
             {
@@ -114,7 +114,7 @@ namespace RailwayMod
         {
             for (int i = 0; i < t.Count; i++)
             {
-                if (GUI.Button(new Rect(2, 2 + i * 27, scrollNeeded ? 338 : 357, 25), t[i].name))
+                if (GUI.Button(new Rect(2, 2 + i * 27, scrollNeeded ? 338 : 357, 25), t[i].GetUncheckedLocalizedTitle()))
                 {
                     // select 't[i]' as the prefab to use on all paths of STType 'type'. 
                     SetStationTrackForType(selectedPrefab, type, t[i]);
