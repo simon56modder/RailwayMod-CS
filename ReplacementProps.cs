@@ -108,7 +108,7 @@ namespace RailwayMod
         void OnGUI()
         {
             if (showWindow && !ToolsModifierControl.cameraController.m_freeCamera)
-                winrect = Utils.ChangeHeight(Utils.ClampRectToScreen(GUI.Window(1524897, winrect, Window, "Train Tracks Replacement Props")), winheight);
+                winrect = Utils.ChangeHeight(Utils.ClampRectToScreen(GUI.Window(1524897, winrect, Window, "Railway Props")), winheight);
         }
         void Window(int id)
         {
