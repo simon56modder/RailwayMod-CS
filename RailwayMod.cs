@@ -22,14 +22,12 @@ namespace RailwayMod
 
         public string Name
         {
-            get
-            {
-                return "Railway Mod";
-            }
+            get { return "Railway Mod"; }
         }
+
         public string Description
         {
-            get { return ""; }
+            get { return "Allows railway station track and prop replacement"; }
         }
 
         public static GameObject obj = null;
