@@ -59,7 +59,7 @@ namespace RailwayMod
         void OnGUI()
         {
             if (selectedPrefab != null && !ToolsModifierControl.cameraController.m_freeCamera)
-                winrect = Utils.ChangeHeight(Utils.ClampRectToScreen(GUI.Window(1524896, winrect, Window, "Station Track Selection")), winheight);
+                winrect = Utils.ChangeHeight(Utils.ClampRectToScreen(GUI.Window(1524896, winrect, Window, "Railway Station Tracks")), winheight);
         }
         private void Window(int id)
         {
