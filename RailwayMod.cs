@@ -22,7 +22,7 @@ namespace RailwayMod
 
         public string Name
         {
-            get { return "Railway Mod"; }
+            get { return "Railway Replacer"; }
         }
 
         public string Description

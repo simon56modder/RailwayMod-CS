@@ -217,8 +217,17 @@ namespace RailwayMod
             tracks[STType.NormalDouble] = new List<NetInfo>();
             tracks[STType.ElevatedDouble] = new List<NetInfo>();
             tracks[STType.SingleOneSided] = new List<NetInfo>();
+            tracks[STType.SingleRight] = new List<NetInfo>();
             tracks[STType.SingleTwoSided] = new List<NetInfo>();
+            tracks[STType.ElevatedSingleTwoSided] = new List<NetInfo>();
+            tracks[STType.ElevatedSingleLeft] = new List<NetInfo>();
+            tracks[STType.ElevatedSingleRight] = new List<NetInfo>();
             tracks[STType.Wide] = new List<NetInfo>();
+            tracks[STType.ElevatedWide] = new List<NetInfo>();
+            tracks[STType.QuadBypass] = new List<NetInfo>();
+            tracks[STType.QuadIsland] = new List<NetInfo>();
+            tracks[STType.ElevatedQuadBypass] = new List<NetInfo>();
+            tracks[STType.ElevatedQuadIsland] = new List<NetInfo>();
 
             // read through all networks
             for (uint i = 0; i < networks.Length; i++)
@@ -241,11 +250,38 @@ namespace RailwayMod
                         case "r69rwst-single1":
                             addTrackToList(STType.SingleOneSided, net);
                             continue;
+                        case "r69rwst-singler":
+                            addTrackToList(STType.SingleRight, net);
+                            continue;
                         case "r69rwst-single2":
                             addTrackToList(STType.SingleTwoSided, net);
                             continue;
+                        case "r69rwst-esingle2":
+                            addTrackToList(STType.ElevatedSingleTwoSided, net);
+                            continue;
+                        case "r69rwst-esinglel":
+                            addTrackToList(STType.ElevatedSingleLeft, net);
+                            continue;
+                        case "r69rwst-esingler":
+                            addTrackToList(STType.ElevatedSingleRight, net);
+                            continue;
                         case "r69rwst-wide":
                             addTrackToList(STType.Wide, net);
+                            continue;
+                        case "r69rwst-ewide":
+                            addTrackToList(STType.ElevatedWide, net);
+                            continue;
+                        case "r69rwst-quadbypass":
+                            addTrackToList(STType.QuadBypass, net);
+                            continue;
+                        case "r69rwst-quadisland":
+                            addTrackToList(STType.QuadIsland, net);
+                            continue;
+                        case "r69rwst-equadbypass":
+                            addTrackToList(STType.ElevatedQuadBypass, net);
+                            continue;
+                        case "r69rwst-equadisland":
+                            addTrackToList(STType.ElevatedQuadIsland, net);
                             continue;
                     }
                 }
@@ -256,8 +292,18 @@ namespace RailwayMod
             addTrackToList(STType.NormalDouble, "Train Station Track (C)");
             addTrackToList(STType.NormalDouble, "Train Station Track (NP)");
             addTrackToList(STType.NormalDouble, "Train Station Track (CNP)");
+            addTrackToList(STType.NormalDouble, "1628756964.Swiss track D2 (Sta. NC NP)_Data");
+            addTrackToList(STType.NormalDouble, "1623716821.Swiss track D2 (Sta. NC)_Data");
+            addTrackToList(STType.NormalDouble, "1636982392.Swiss track D2 (Sta_NP)_Data");
+            addTrackToList(STType.NormalDouble, "1318521929.JP 2L station tracks KT01G_Data");
+            addTrackToList(STType.NormalDouble, "1318519247.JP 2L station tracks KT01GP_Data");
+            addTrackToList(STType.NormalDouble, "1794017226.JP 2L station tracks KT21G_Data");
+            addTrackToList(STType.NormalDouble, "1794017226.JP 2L station tracks KT21GP_Data");
+            addTrackToList(STType.NormalDouble, "1794017226.JP 2L station tracks KT21NCG_Data");
+            addTrackToList(STType.NormalDouble, "1794017226.JP 2L station tracks KT21NCGP_Data");
             // elevated double
             addTrackToList(STType.ElevatedDouble, "Train Cargo Track Elevated");
+            addTrackToList(STType.ElevatedDouble, "Train Station Track Elevated");
             addTrackToList(STType.ElevatedDouble, "Station Track Elevated (C)");
             addTrackToList(STType.ElevatedDouble, "Station Track Elevated (NP)");
             addTrackToList(STType.ElevatedDouble, "Station Track Elevated (CNP)");
@@ -266,12 +312,50 @@ namespace RailwayMod
             addTrackToList(STType.ElevatedDouble, "Station Track Elevated Narrow (NP)");
             addTrackToList(STType.ElevatedDouble, "Station Track Elevated Narrow (CNP)");
             addTrackToList(STType.ElevatedDouble, "Station Track Eleva");
-            // single 1
+            addTrackToList(STType.ElevatedDouble, "1490477748.Train Track Elevated0");
+            addTrackToList(STType.ElevatedDouble, "1318528846.JP 2L station tracks KT01E_Data");
+            addTrackToList(STType.ElevatedDouble, "1318523722.JP 2L station tracks KT01EP_Data");
+            addTrackToList(STType.ElevatedDouble, "1794017226.JP 2L station tracks KT21E_Data");
+            addTrackToList(STType.ElevatedDouble, "1794017226.JP 2L station tracks KT21EP_Data");
+            addTrackToList(STType.ElevatedDouble, "1794017226.JP 2L station tracks KT21NCE_Data");
+            addTrackToList(STType.ElevatedDouble, "1794017226.JP 2L station tracks KT21NCEP_Data");
+            // single left
             addTrackToList(STType.SingleOneSided, "Rail1LStation");
+            addTrackToList(STType.SingleOneSided, "1643395399.Swiss track S2 (Sta)_Data");
+            // single right
+            addTrackToList(STType.SingleRight, "1731659180.GroundSingleTrackStationTrack_Data");
             // single 2
             addTrackToList(STType.SingleTwoSided, "Rail1L2SidedStation");
+            addTrackToList(STType.SingleTwoSided, "1490478373.Shinkansen Single Station Track_Data");
+            addTrackToList(STType.SingleTwoSided, "1778734451.JP 1L station track KT21GR_Data"); //actually one sided (right)
+            addTrackToList(STType.SingleTwoSided, "1778734451.JP 1L station track KT21NCGR_Data"); //actually one sided (right)
+            addTrackToList(STType.SingleTwoSided, "1318531201.JP 1L station tracks KT01G_Data");
+            // elevated single 2
+            addTrackToList(STType.ElevatedSingleTwoSided, "1490478373.Train Oneway Track Elevated0");
+            // elevated single left
+            addTrackToList(STType.ElevatedSingleLeft, "1476180377.Single Station Track_Data");
+            addTrackToList(STType.ElevatedSingleLeft, "1476180377.Single Station Track Narrow_Data");
+            // elevated single right
+            addTrackToList(STType.ElevatedSingleRight, "1778734451.JP 1L station track KT21ER_Data");
+            addTrackToList(STType.ElevatedSingleRight, "1778734451.JP 1L station track KT21NCER_Data");
+            addTrackToList(STType.ElevatedSingleRight, "1731659180.ElevatedSingleTrackStationTrack_Data");
             // wide
             addTrackToList(STType.Wide, "1194290640.Wide Train Station Track_Data");
+            addTrackToList(STType.Wide, "Train Station Track Ground Island");
+            // elevated wide
+            addTrackToList(STType.ElevatedWide, "Train Station Track Elevated Island");
+            // quad bypass
+            addTrackToList(STType.QuadBypass, "Train Station Track Ground Bypass");
+            addTrackToList(STType.QuadBypass, "1577947171.Bypass Station Track_Ground_Data");
+            // quad island
+            addTrackToList(STType.QuadIsland, "Train Station Track Ground Dual Island");
+            addTrackToList(STType.QuadIsland, "1698282173.DualIslandStationTrack_Ground_Data");
+            // elevated quad bypass
+            addTrackToList(STType.ElevatedQuadBypass, "Train Station Track Elevated Bypass");
+            addTrackToList(STType.ElevatedQuadBypass, "1577947171.Bypass Station Track_Elevated_Data");
+            // elevated quad island
+            addTrackToList(STType.ElevatedQuadIsland, "Train Station Track Elevated Dual Island");
+            addTrackToList(STType.ElevatedQuadIsland, "1698282173.DualIslandStationTrack_Elevated_Data");
         }
         private void addTrackToList(STType type, string name)
         {
@@ -329,8 +413,17 @@ namespace RailwayMod
         NormalDouble,
         ElevatedDouble,
         SingleOneSided,
+        SingleRight,
         SingleTwoSided,
+        ElevatedSingleTwoSided,
+        ElevatedSingleLeft,
+        ElevatedSingleRight,
         Wide,
+        ElevatedWide,
+        QuadBypass,
+        QuadIsland,
+        ElevatedQuadBypass,
+        ElevatedQuadIsland,
         none
     }
 }
