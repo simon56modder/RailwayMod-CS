@@ -1,13 +1,8 @@
-﻿using System;
+﻿using ColossalFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using ICities;
 using UnityEngine;
-
-using UnityEngine.SceneManagement;
-using ColossalFramework;
-using ColossalFramework.UI;
 
 namespace RailwayMod
 {
@@ -27,9 +22,15 @@ namespace RailwayMod
             "Railway Crossing Medium",
             "Railway Crossing Long",
             "Railway Crossing Very Long",
-            "1530376523.r69rwp-buff_Data" };
+            "1530376523.r69rwp-buff_Data",
+            "1530376523.r69rwp-cat4n_Data",
+            "1530376523.r69rwp-cat4e_Data",
+            "1530376523.r69rwp-cat4t_Data",
+            "1530376523.r69rwp-gant1_Data",
+            "1530376523.r69rwp-gant2_Data",
+            "1530376523.r69rwp-gant4_Data" };
         PropInfo[] currentProps = new PropInfo[] {
-           null, null, null, null, null, null, null, null, null, null, null, null, null };
+           null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null };
         readonly string[] propIdentifiers = new string[] {
             "r69rwp-cat2n",
             "r69rwp-cat2e",
@@ -43,7 +44,13 @@ namespace RailwayMod
             "r69rwp-barr2",
             "r69rwp-barr3",
             "r69rwp-barr4",
-            "r69rwp-buff" };
+            "r69rwp-buff",
+            "r69rwp-cat4n",
+            "r69rwp-cat4e",
+            "r69rwp-cat4t",
+            "r69rwp-gant1",
+            "r69rwp-gant2",
+            "r69rwp-gant4" };
         readonly string[] propTypes = new string[] {
             "Double normal catenary",
             "Double end-catenary",
@@ -57,29 +64,35 @@ namespace RailwayMod
             "Medium barrier",
             "Long barrier",
             "Very long barrier",
-            "Buffer" };
+            "Buffer",
+            "Quad normal catenary",
+            "Quad end-catenary",
+            "Quad tunnel catenary",
+            "Single gantry",
+            "Double gantry",
+            "Quad gantry" };
         #endregion
         SavedString[] settings;
         public List<Dictionary<PropInfo, string>> replacementProps;
 
         // UI
-        private Rect winrect = new Rect(200, 100, 375, 412);
-        private int winheight = 412;
+        private Rect winrect = new Rect(200, 100, 375, 602);
+        private int winheight = 602;
         private short expanded = -1;
         private bool showWindow = false;
         private Vector2 scroll = Vector2.zero;
 
         void Start()
         {
-            settings = new SavedString[13];
-            for (short i = 0; i < 13; i++)
+            settings = new SavedString[19];
+            for (short i = 0; i < 19; i++)
             {
                 settings[i] = new SavedString(propIdentifiers[i], RailwayMod.SETTINGS_FILENAME, defaultProps[i], true);
             }
             var allProps = Resources.FindObjectsOfTypeAll<PropInfo>();
             LoadReplacementProps(allProps);
             // replace props on load
-            for (ushort i = 0; i < 13; i++)
+            for (ushort i = 0; i < 19; i++)
             {
                 // check if prop exists
                 try
@@ -99,16 +112,18 @@ namespace RailwayMod
         }
         void Update()
         {
-            if (Input.GetKey(KeyCode.LeftControl))
+            if (Input.GetKey(KeyCode.LeftShift) 
+                && Input.GetKey(KeyCode.LeftAlt)
+                && Input.GetKeyDown(KeyCode.P)
+            )
             {
-                if (Input.GetKeyDown(KeyCode.P))
-                    showWindow = !showWindow;
+                showWindow = !showWindow;
             }
         }
         void OnGUI()
         {
             if (showWindow && !ToolsModifierControl.cameraController.m_freeCamera)
-                winrect = Utils.ChangeHeight(Utils.ClampRectToScreen(GUI.Window(1524897, winrect, Window, "Train Tracks Replacement Props")), winheight);
+                winrect = Utils.ChangeHeight(Utils.ClampRectToScreen(GUI.Window(1524897, winrect, Window, "Railway Props")), winheight);
         }
         void Window(int id)
         {
@@ -118,10 +133,10 @@ namespace RailwayMod
                 showWindow = false;
                 expanded = -1;
             }
-            GUI.Label(new Rect(5, 18, 358, 23), "Choose the props to use as replacements on the Train tracks.");
+
 
             ushort h = 43;
-            for (ushort i = 0; i < 13; i++)
+            for (ushort i = 0; i < 19; i++)
             {
                 ushort toIncrease = 28;
                 GUI.Label(new Rect(35, 2 + h, 330, 20), "<b>" + propTypes[i] + "</b> : " + replacementProps[i][currentProps[i]]);
@@ -179,7 +194,7 @@ namespace RailwayMod
         private void LoadReplacementProps(PropInfo[] allprops)
         {
             replacementProps = new List<Dictionary<PropInfo, string>>();
-            for (ushort i = 0; i < 13; i++)
+            for (ushort i = 0; i < 19; i++)
                 replacementProps.Add(new Dictionary<PropInfo, string>());
             foreach (var prop in allprops)
             {
@@ -187,7 +202,7 @@ namespace RailwayMod
                 if (prop.m_material == null) continue;
                 if (prop.m_material.name == "") continue;
 
-                for (ushort i = 0; i < 13; i ++)
+                for (ushort i = 0; i < 19; i ++)
                 {
                     if (prop.m_material.name.Contains(propIdentifiers[i]))
                     {
